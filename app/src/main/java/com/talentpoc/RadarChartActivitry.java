@@ -2,7 +2,7 @@
 package com.talentpoc;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,14 +20,15 @@ import com.talentpoc.data.Entry;
 import com.talentpoc.data.RadarData;
 import com.talentpoc.data.RadarDataSet;
 import com.talentpoc.listener.ChartLabelSelectedListener;
+import com.talentpoc.utils.RoundImageView;
 
 import java.util.ArrayList;
 
-public class RadarChartActivitry extends Activity implements AdapterView.OnItemSelectedListener, ChartLabelSelectedListener {
+public class RadarChartActivitry extends Activity implements AdapterView.OnItemSelectedListener, ChartLabelSelectedListener, View.OnClickListener {
 
     private RadarChart mChart;
     private int mVertices = 3;
-    private Context mContext;
+    private RoundImageView mProfileImageView;
 
 
     @Override
@@ -36,15 +37,16 @@ public class RadarChartActivitry extends Activity implements AdapterView.OnItemS
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_radarchart);
-        mContext = RadarChartActivitry.this;
 
         mChart = (RadarChart) findViewById(R.id.chart1);
-
+        mProfileImageView=(RoundImageView)findViewById(R.id.img_user_profile);
 
         mChart.setWebLineWidth(1.5f);
         mChart.setWebLineWidthInner(0.75f);
         mChart.setWebAlpha(100);
         mChart.setChartLabelSelectedListener(this);
+
+        mProfileImageView.setOnClickListener(this);
         
         setData();
 
@@ -144,6 +146,15 @@ public class RadarChartActivitry extends Activity implements AdapterView.OnItemS
     @Override
     public void onLabelSelected(int xIndex) {
         Toast.makeText(RadarChartActivitry.this, mChart.getXValue(xIndex), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.img_user_profile:{
+                startActivity(new Intent(RadarChartActivitry.this, MainActivity.class));
+            }
+        }
     }
 }
 

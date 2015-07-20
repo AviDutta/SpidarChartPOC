@@ -175,6 +175,7 @@ public class RadarChartRenderer extends DataRenderer {
 
         for (int j = 0; j < labelCount; j++) {
 
+
             for (int i = 0; i < mChart.getData().getXValCount(); i++) {
 
                 float r = (mChart.getYAxis().mEntries[j] - mChart.getYChartMin()) * factor;
