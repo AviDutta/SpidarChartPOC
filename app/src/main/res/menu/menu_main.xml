@@ -1,0 +1,9 @@
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/vertices_spinner"
+        android:showAsAction="ifRoom"
+        android:title="@string/vertices_prompt"
+        android:actionLayout="@layout/spinner_layout"  />
+</menu>
